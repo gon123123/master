@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>sự kiện ratechange xảy ra khi tốc độ phát của âm thanh thay đổi</p>
+    <audio controls onratechange="myFunction(this);" autoplay id="audio">
+        <source src="audio/Unit 1, Test 1.mp3" type="audio/mp3">
+    </audio>
+    <p id="demo"></p>
+</body>
+<script>
+    var element = document.querySelector("#audio");
+    function playBackRate (){
+        element.playbackRate = 2 ;
+    }
+    function myFunction(element) {
+
+        alert("thay đổi tốc độ phát thành 2");
+    }
+</script>
+
+</html>

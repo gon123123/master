@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        min-width: 200px;
+        width: 200px;
+        min-height: 200px;
+        background-color: brown;
+        animation: example 2s ease-in-out 3 forwards;
+        -o-animation: example 2s ease-in-out 3 forwards;
+        -webkit-animation: example 2s ease-in-out 3 forwards;
+        -moz-animation: example 2s ease-in-out 3 forwards;
+    }
+
+    @keyframes example {
+        form {
+            transform: translateX(100px);
+        }
+
+        to {
+            transform: translateX(500px);
+        }
+    }
+</style>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    var element = document.querySelector('#box');
+    element.addEventListener('animationstart', myFunction);
+    element.addEventListener('animationiteration', myRepeats);
+    element.addEventListener('animationend', myEndAnimation);
+    // bất đầu khi hoạt ảnh bắt đầu chạy
+    function myFunction() {
+        this.style.backgroundColor = "#ff1570";
+    }
+
+    function myRepeats() {
+        this.style.backgroundColor = "yellow";
+    }
+
+    function myEndAnimation() {
+        this.style.backgroundColor = "red";
+    }
+</script>
+
+</html>

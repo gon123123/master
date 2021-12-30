@@ -1,0 +1,26 @@
+<!-- 
+Thêm class first-heading vào thẻ h1
+Thêm class second-heading vào thẻ h2
+Xóa bỏ class test tại thẻ h2
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Học JS DOM tại F8</h1>
+    <h2 class="test">Làm bài tập JS tại F8</h2>
+</body>
+
+</html>
+<script>
+    document.querySelector('h1').classList.add("first-heading");
+    document.querySelector('h2').classList.add('second-heading');
+    document.querySelector('h2').classList.remove('test');
+</script>

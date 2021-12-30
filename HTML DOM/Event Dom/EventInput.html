@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <input type="checkbox" name="" id="">vip
+    <select name="" id="">
+        <option value="value1">php</option>
+        <option value="value2">javascript</option>
+        <option value="value3">ReactJs</option>
+    </select>
+</body>
+<script>
+    var inputText = document.querySelector('input[type="text"]');
+    inputText.onchange = function (e) {
+        console.log(e);
+    }
+    var checkBox = document.querySelector('input[type="checkbox"]');
+    checkBox.onclick = function (e) {
+        console.log(e);
+    }
+</script>
+
+</html>

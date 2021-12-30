@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
+<script>
+    var boxElement = document.querySelector('.box');
+    // boxElement.style.width = '200px';
+    // boxElement.style.height = '200px';
+    // boxElement.style.backgroundColor = 'red';
+
+    // gom lại một đống
+    Object.assign(boxElement.style, {
+        width: '300px',
+        height: '300px',
+        backgroundColor: 'green',
+    });
+</script>
+<!-- bài tập 1 : -->
+<!-- 
+    Đặt cho thẻ div id box có màu nền với mã #F05123
+Đặt font-size cho thẻ div là 2rem
+ -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">BOX</div>
+</body>
+
+</html>
+<script>
+    var documentBox = document.querySelector('#box');
+    Object.assign(documentBox.style, {
+        backgroundColor: '#F05123',
+        fontSize: '2rem'
+    });
+</script> -->

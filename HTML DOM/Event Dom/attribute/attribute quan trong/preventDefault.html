@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul {
+        display: none;
+    }
+
+    input:focus~ul {
+        display: block;
+    }
+</style>
+
+<body>
+    <p>mô tả : nhấn vào input thì danh sách hiện ra , khi mất tiêu điểm thì danh sách vẫn còn</p>
+    <input type="text">
+    <ul>
+        <li>PHP</li>
+        <li>JAVASCRIPT</li>
+        <li>MONGODB</li>
+    </ul>
+</body>
+<script>
+    document.querySelector('ul').onmousedown = function (event) {
+        // ngăn chặn việc biết mất của ul khi input mất tiêu điểm 
+        event.preventDefault();
+        console.log(event);
+        document.querySelector('input[type="text"]').value = 'chao';
+    }
+    // document.querySelector('ul').onclick = function (event) {
+    //     console.log(event);
+    // }
+</script>
+
+</html>

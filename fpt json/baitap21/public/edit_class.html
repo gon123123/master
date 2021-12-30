@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>UPDATE INFORMATION CLASS</title>
+</head>
+
+<body onload="getInfoClass();">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-3">
+                <form action="" onsubmit="return setData();">
+                    <div class="form-group">
+                        <label for="">NAME CLASS</label>
+                        <input type="text" name="nameClass" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">IMAGE</label>
+                        <input type="text" name="imageClass" class="form-control">
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-outline-info">SAVE</button>
+                        <a href="index.html" class="btn btn-outline-warning">CANCEL</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61cb2cfd194ffe0017788c15.mockapi.io/class";
+    var id = null;
+    var param = new URLSearchParams(window.location.search);
+    id = param.get("id");
+    var data = {};
+
+    function getInfoClass() {
+        var urlData = url + "/" + id;
+        console.log(urlData);
+        axios.get(urlData)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    data = response.data;
+                    document.querySelector('input[name="nameClass"]').value = data.name;
+                    document.querySelector('input[name="imageClass"]').value = data.avatar;
+                }
+            })
+    }
+
+    function setData() {
+        alert("chao pro");
+        var urlData = url + "/" + id;
+        console.log(urlData);
+        var name = document.querySelector('input[name="nameClass"]').value;
+        var avatar = document.querySelector('input[name="imageClass"]').value;
+        data.name = name;
+        data.avatar = avatar;
+        axios.put(urlData, data)
+            .then(function (response) {
+                window.location.href = "index.html";
+            })
+        return false; // ngăn không cho tải lại trang 
+    }
+</script>
+
+</html>

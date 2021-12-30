@@ -1,0 +1,19 @@
+<!-- 
+    Get checkbox input NodeList lưu vào biến checkboxNodes
+Get checkbox input element có type="checkbox" value="1" lưu vào biến checkbox1Element
+Get checkbox element có attribute checked nhưng không có attribute disabled lưu vào biến checkboxCheckedAndNotDisabled
+Get checkbox element có attribute disabled nhưng không có attribute checked lưu vào biến checkboxDisabledAndNotChecked
+Get checkbox element có attribute checked và disabled lưu vào biến checkboxCheckedAndDisabled
+ -->
+<div type="checkbox" value="1" name="answer"></div>
+<input type="checkbox" value="1" name="answer" />
+<input type="checkbox" value="2" name="answer" checked />
+<input type="checkbox" value="3" name="answer" disabled />
+<input type="checkbox" value="4" name="answer" checked disabled />
+<script>
+    var checkboxNodes = document.querySelectorAll('input[type="checkbox"]');
+    var checkbox1Element = document.querySelector('input[type="checkbox"][value="1"]');
+    var checkboxCheckedAndNotDisabled = document.querySelector('[checked]:not([disabled])');
+    var checkboxDisabledAndNotChecked = document.querySelector('[disabled]:not([checked])');
+    var checkboxCheckedAndDisabled = document.querySelector('[checked][disabled]');
+</script>

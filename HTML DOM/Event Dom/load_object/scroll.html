@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        max-width: 400px;
+        max-height: 100px;
+        overflow: auto;
+    }
+
+    .box::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #555;
+    }
+</style>
+
+<body>
+    <!-- xảy ra khi thanh cuộn của miootj phần tử đang được cuộn -->
+    <div class="box" onscroll="run();">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos vitae a ut dolor, non maxime nostrum alias
+            molestias rerum excepturi sunt quaerat? Quod, veritatis? Velit saepe ipsa nobis est consequatur unde
+            cupiditate quos quam accusantium accusamus. Pariatur sint laudantium nisi quibusdam esse ab distinctio eum
+            perspiciatis asperiores! Dicta illo provident praesentium asperiores ex quas unde! Maxime doloremque, earum
+            optio dolor voluptates quasi minima, cumque autem corporis, ipsum tenetur saepe officiis consectetur ex
+            quisquam eos fuga aliquam temporibus odit veritatis sunt totam quia iusto aperiam. Explicabo quaerat eaque,
+            labore facilis sapiente ea minus tempora est illo maiores? Rerum aliquam asperiores quisquam.</p>
+    </div>
+    <p id="demo"></p>
+</body>
+<script>
+    var i = 0;
+
+    function run() {
+        document.getElementById('demo').innerHTML = i += 1;
+    }
+</script>
+
+</html>

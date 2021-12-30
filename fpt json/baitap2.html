@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = "madddam";
+    var len = str.length;
+    var lenMod = Math.floor(len / 2);
+    var flat = true;
+    console.log(lenMod);
+    for (let i = 0; i < lenMod; i++) {
+        if (str.charAt(i) != str.charAt(len - i-1)) {
+            flat = false;
+            break;
+        }
+    }
+    if (flat == true) {
+        console.log("chuoi doi xung");
+    } else {
+        console.log("chuoi khong doi xung");
+    }
+</script>
+
+</html>

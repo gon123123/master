@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="myBtn" onclick="myFunction(event);">
+        chạm vào tôi để biết sự kiện có đáng tin cậy
+    </button>
+    <button id="khong_Tin">không tin cậy</button>
+</body>
+<script>
+    function myFunction(event) {
+        if (event.isTrusted) {
+            console.log("sự kiện đáng tin cậy");
+        } else {
+            console.log("sự kiện không tin cậy");
+        }
+    }
+
+    var element = document.querySelector("#khong_Tin");
+    element.addEventListener("click", myFunction2);
+
+    function myFunction2(event) {
+        var elementBtn = document.querySelector("#myBtn");
+        elementBtn.click();
+    }
+</script>
+
+</html>

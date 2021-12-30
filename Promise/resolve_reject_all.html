@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1. Promise.resolve</p>
+    <p>2. Promise.reject</p>
+    <p>3. Promise.all</p>
+    <p>kl : thư viện : output luôn luôn là promise</p>
+</body>
+</html>
+<script>
+    // var promise = new Promise(function(resolve, reject) {    //1
+    //     // xử lý logic
+    //     reject('Error');
+    // });
+    // var promise = new Promise.resole('thanh cong'); // 2 luôn chạy vào thằng then , nếu trong then có return promise với promise đó có reject thì mới chạy đến catch 
+    var promise = new Promise.reject('thanh thất bại'); // 3
+    promise
+        .then(function(result){
+            console.log('result '+ result);
+        })
+        .catch(function(err){
+            console.log('error '+ err);
+        });
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thong tin thoi tiet</title>
+</head>
+
+<body>
+    <div>
+        <label for="">Nhap thanh pho</label>
+        <input type="text" id="cityName" placeholder="Nhap ten thanh ho muon tim va enter">
+    </div>
+    <div>
+        <h2>Thông Tin Thời Tiết</h2>
+        <h3>Tên Thành Phố <span id="apCityName"></span> ,<span id="nameCoutry"></span></h3>
+        <p>Nhiệt Độ <span id="Temp"></span> độ C</p>
+        <p>Độ Ẩm <span id="Mun"></span></p>
+        <p>Thời Tiết <span id="weather"></span></p>
+    </div>
+</body>
+<script>
+    var url = "https://api.openweathermap.org/data/2.5/weather?appid=5fe76176b850f32d921496ae9bc0c3d3&units=metric";
+    // url (phải có htttp://)
+    // thay đổi dấu & của appid thành dấu ? , dấu ? của q= sang dấu &;
+    var city = document.getElementById("cityName");
+    var apCityName = document.getElementById("apCityName");
+    var nameCoutry = document.getElementById("nameCoutry");
+    var Temp = document.getElementById("Temp");
+    var Mun = document.getElementById("Mun");
+    var weather = document.getElementById("weather");
+    // bắt sự kiện của phím 
+    city.onkeydown = function (event) {
+        if (event.which == 13) {
+            // lay value tu the input va gui len api.weather
+            var cityName = event.target.value;
+            console.log(cityName);
+
+            var request = url + "&q=" + cityName;
+            fetch(request, {
+                    method: "GET",
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    // hiển thì dữ liệu trên màn hình
+                    apCityName.innerHTML = data.name;
+                    nameCoutry.innerHTML = data.sys.country;
+                    Temp.innerHTML = data.main.temp;
+                    Mun.innerHTML = data.main.humidity;
+                    weather.innerHTML = data.weather[0].main;
+
+                    console.log(data);
+                })
+            // viết bằng es6 
+            // fetch(request, {
+            //         method: "GET",
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         console.log(data);
+            //     })
+        }
+    }
+</script>
+
+</html>

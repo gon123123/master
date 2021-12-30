@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>LIST STUDENT OF CLASS</title>
+</head>
+
+<body onload="getDataStudent();">
+    <h4>STUDENT OF CLASS : <span id="nameclass"></span></h4>
+    <div class="container">
+        <h4 align="center">LIST STUDENT OF CLASS</h4>
+        <table class="table table-striped table-responsive-sm">
+            <thead>
+                <th>ID CLASS</th>
+                <th>nam student</th>
+                <th>avatar</th>
+                <th><a href="add_student.html" id="hrefAdd" class="btn btn-primary">ADD STUDENT NEW</a></th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61cb2cfd194ffe0017788c15.mockapi.io/class";
+    var htmls = "";
+    var param = new URLSearchParams(window.location.search);
+    var id = param.get("id");
+    document.querySelector("#hrefAdd").setAttribute("href","add_student.html?id=" + id) ;
+
+    var urlDataStudent = url + "/" + id + "/student";
+
+    function getDataStudent() {
+        axios.get(urlDataStudent)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    var data = response.data;
+                    data.forEach(function (item) {
+                        htmls += `
+                            <tr id="item-student-${item.id}">
+                                    <td>${item.clasId}</td>
+                                    <td>${item.name_student}</td>
+                                    <td>
+                                    <img src="${item.avatar}" style="width:100px">
+                                    </td>
+                                    <td><a class="btn btn-outline-info" href="detail_student.html?id=${item.id}">DETAIL</a></td>
+                                    <td><a class="btn btn-success" href="edit_student.html?id=${item.id}&idClass=${item.clasId}">UPDATE</a></td>
+                                    <td><button class="btn btn-danger" onclick="removeElement(${item.id});">DEL</button></td>
+                                </tr>
+                            `;
+                    })
+                    document.querySelector("tbody").innerHTML = htmls;
+                }
+            })
+    }
+
+    function removeElement(idElement) {
+        var urlRemove = url + "/" + id + "/student/" + idElement;
+        axios.delete(urlRemove)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    let element = document.querySelector("#item-student-" + idElement);
+                    element.remove();
+                }
+            })
+    }
+</script>
+
+</html>

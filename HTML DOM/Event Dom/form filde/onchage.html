@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- sự kiện kích hoạt khi người dùng hay đổi nội dung trong trường (sau khi mất tiêu điểm) -->
+    <input type="text" id="myText">
+    <p id="demo"></p>
+</body>
+<script>
+    var element = document.querySelector('#myText');
+    element.onchange = function (e) {
+        console.log(e);
+        document.getElementById("myText").value = "vip vay anh hai ";
+    }
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- 
+1. Get elements box và lưu vào biến boxHTMLCollection
+2. Lấy element box thứ nhất lưu vào biến box1Element
+3. Lấy element box thứ hai lưu vào biến box2Element
+4. Get tất cả li và lưu vào biến allItemElements
+5. Get tất cả li là con của box thứ nhất và lưu vào biến box1ItemElements
+6. Get tất cả li là con của box thứ hai và lưu vào biến box2ItemElements
+ -->
+<div class="container">
+    <div class="box">
+        <ul>
+            <li class="item">F8 lý thuyết</li>
+            <li class="item">F8 bài tập</li>
+            <li class="item">F8 thực hành</li>
+        </ul>
+    </div>
+    <div class="box">
+        <ul>
+            <li class="item">Kiền trì</li>
+            <li class="item">Học mỗi ngày</li>
+            <li class="item">Tin vào bản thân</li>
+        </ul>
+    </div>
+</div>
+<script>
+    var boxHTMLCollection = document.getElementsByClassName('box');
+    var box1Element = document.querySelector('.box:first-child');
+    var box2Element = document.querySelector('.box:nth-child(2)');
+    var allItemElements = document.querySelectorAll('li');
+    var box1ItemElements = document.querySelectorAll('.box:first-child li');
+    var box2ItemElements = document.querySelectorAll('.box:nth-child(2) li');
+</script>

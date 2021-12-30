@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="test">
+    <p>hãy thay đổi kích thước cua cửa sổ trình duyệt</p>
+    <p id="demo"></p>
+</body>
+    <script>
+        var ElementBody = document.getElementById("test");
+        ElementBody.onresize = function (e) {
+            console.log(e);
+            var width2 = window.outerWidth ;
+            var height2 = window.innerHeight ;
+            console.log(width2);
+            text = "chiều rộng = " + width2 + " chiều dài = " + height2 ;
+            console.log(text);
+            document.getElementById('demo').innerHTML = text ;
+        }
+    </script>
+</html>

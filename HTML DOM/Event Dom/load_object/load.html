@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body id="nhay">
+    <div class="box" style="background-color: green;">
+
+    </div>
+    <p></p>
+</body>
+<script>
+    var element = document.getElementById("nhay");
+    element.onload = function (e) {
+        console.log(e);
+        number = 0;
+        var id = setInterval(frame, 500);
+
+        function frame() {
+            if (number == 10) {
+                document.querySelector('.box').style.backgroundColor = 'yellow';
+                clearInterval(id)
+            } else {
+                number++;
+                if (number % 2 == 0) {
+                    document.querySelector('.box').style.backgroundColor = 'red';
+                    console.log(number);
+                } else {
+                    document.querySelector('.box').style.backgroundColor = 'green';
+                    console.log(number);
+                }
+            }
+        }
+    }
+</script>
+
+</html>

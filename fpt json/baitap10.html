@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Loading.....</h2>
+</body>
+<script>
+    var element = document.querySelector("h2");
+
+    function kiem_tra(total_grades, time) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                if (total_grades >= 9) {
+                    resolve(total_grades);
+                } else {
+                    reject("ban khong du dieu kien de di");
+                }
+            }, time);
+        })
+    }
+
+    var diem = prompt("nhap diem cua ban");
+    var time = prompt("nhap thoi gian cho");
+
+    kiem_tra(Number.parseInt(diem), time)
+        .then(function (data) {
+            element.innerHTML = "ban du dieu kien di singarpo vi dat tren " + diem;
+        })
+        .catch(function (err) {
+            element.innerHTML = err;
+        })
+</script>
+
+</html>

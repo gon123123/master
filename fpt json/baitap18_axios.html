@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>Danh sach khach san</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <th>STT</th>
+            <th>NAME</th>
+            <th>LOGO</th>
+            <th>ADDRESS</th>
+            <th>Sua</th>
+            <th>Xoa</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="modal-1" aria-hidden="true">
+
+        <!-- [2] -->
+        <div tabindex="-1" data-micromodal-close>
+
+            <!-- [3] -->
+            <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+
+
+                <header>
+                    <h2 id="modal-1-title">
+                        Modal Title
+                    </h2>
+
+                    <!-- [4] -->
+                    <button aria-label="Close modal" data-micromodal-close></button>
+                </header>
+
+                <div id="modal-1-content">
+                    Modal Content
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61c5c433c003e70017b798df.mockapi.io/hotel";
+    var element = document.querySelector("tbody");
+    var htmls = "";
+    axios.get(url)
+        .then(function (response) {
+            console.log(response);
+            if (response.statusText === "OK") {
+                var data = response.data;
+                data.forEach(function (item) {
+                    htmls +=
+                        `
+                            <tr id="hotel-item-${item.id}">
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td>
+                                    <img src="${item.logo + item.id}" style="width: 100px;" alt=""; />    
+                                </td>
+                                <td>${item.address}</td> 
+                                <td><button class="btn btn-md btn-primary" onclick="updateItem()">SỬA</button></td>
+                                <td><button  class="btn btn-md btn-danger"onclick="removeItem(${item.id})">XÓA</button></td>   
+                            </tr>
+                        `
+                })
+                element.innerHTML = htmls;
+            }
+        })
+
+    function removeItem(id) {
+        var urlRemove = url + '/' + id;
+        axios.delete(urlRemove)
+            .then(function (response) {
+                console.log(response);
+            })
+            .then(function () {
+                var item_hotel = document.querySelector("#hotel-item-" + id);
+                item_hotel.remove();
+            })
+    }
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Van_dv(maso, name, ngaysinh, giaithuong) {
+        this.maso = maso;
+        this.name = name;
+        this.ngaysinh = ngaysinh;
+        this.giaithuong = giaithuong;
+
+        this.kiem_tra = function (ngaythi, tuoi) {
+            var d1 = new Date(ngaythi);
+            var namthi = d1.getUTCFullYear();
+            var d2 = new Date(this.ngaysinh);
+            var namsinh_vdv = d2.getUTCFullYear();
+            if (namthi - namsinh_vdv > tuoi) {
+                console.log("du dieu kien thi nghe");
+            } else {
+                console.log("khong du dieu kien thi nghe");
+            }
+        }
+        this.them_giaiThuong = function (thuong_them) {
+            this.giaithuong.push(thuong_them);
+            console.log(this.name + "da dat duoc cac danh hieu " + this.giaithuong.join("\n"));
+        }
+        this.list_giaiThuong = function () {
+            console.log(this.giaithuong);
+        }
+    }
+    var arr = ["cup vang", "cup bac", "cup dong"];
+    var Tuan = new Van_dv("20it020", "minh tuan", "06/11/2001", arr);
+    Tuan.kiem_tra("12/25/2021",19);
+    Tuan.them_giaiThuong("kim cuong");
+    Tuan.them_giaiThuong("kim bach kim");
+    Tuan.list_giaiThuong();
+</script>
+
+</html>

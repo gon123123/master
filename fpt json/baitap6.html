@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- //////////////////////////////////// -->
+    <!-- KẾ THỪA OBJECT literal -->
+    <!-- //////////////////////////////////// -->
+</body>
+<script>
+var objLiteral = {
+    name : "Minh Tuan",
+    age : "21",
+    learning : function(){
+        console.log("ban"+this.name+"dang hoc bai");
+    }
+};
+// muốn kế thừa được phải sử dụng __proto__
+var Tuan = function (){
+    __proto__ : objLiteral;
+}
+Tuan.learning = function (){
+    console.log("chao cac ban");
+}
+console.log(Tuan.name);
+Tuan.learning();
+</script>
+
+</html>

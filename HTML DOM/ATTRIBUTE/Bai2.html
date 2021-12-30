@@ -1,0 +1,19 @@
+<!-- 
+Lấy element node của thẻ a thứ nhất lưu vào biến f8LinkElement
+Lấy nội dung href attribute của thẻ a thứ nhất và lưu vào biến f8ShortLink
+Thêm href attribute cho thẻ a thứ hai từ giá trị của biến f8ShortLink
+Thêm data-url attribute vào div element, giá trị của attribute lấy từ biến f8ShortLink
+ -->
+<a href="https://f8.edu.vn/">Học lập trình</a>
+
+<a>Học lập trình</a>
+
+<div>Lập trình Javascript</div>
+
+<script>
+    var f8LinkElement = document.querySelector('a');
+    var f8ShortLink = f8LinkElement.href;
+    var achor2 = document.querySelectorAll('a');
+    achor2[1].href = f8ShortLink;
+    document.querySelector('div').setAttribute(['data-url'], f8ShortLink);
+</script>

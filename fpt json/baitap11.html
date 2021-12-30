@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>trong callback của then nếu không return một
+        promise thì sẽ không thức hiện theo thứ tự mà sẽ theo trình tự cái nào xong trước thì hiển thì trước</h3>
+        <p>để khắc phục tính trạng trên thì mỗi then sẽ return về một promise </p>
+</body>
+<script>
+    var promise = new Promise(function (resolve, reject) {
+        resolve();
+    })
+    promise
+        .then(function () {
+            setTimeout(function () {
+                console.log("1");
+            }, 5000);
+        })
+        .then(function () {
+            setTimeout(function () {
+                console.log("1");
+            }, 4000);
+        })
+        .then(function () {
+            setTimeout(function () {
+                console.log("3");
+            }, 3000);
+        })
+        .then(function () {
+            setTimeout(function () {
+                console.log("4");
+            }, 2000);
+        })
+        .then(function () {
+            setTimeout(function () {
+                console.log("2");
+            }, 1000);
+        })
+
+        // khắc phục 
+        // .then(function () {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(function(){
+        //             console.log("1");
+        //             resolve();
+        //         }, 5000);
+        //     })
+        // })
+        // .then(function () {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(function(){
+        //             console.log("2");
+        //             resolve();
+        //         }, 4000);
+        //     })
+        // })
+        // .then(function () {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(function(){
+        //             console.log("3");
+        //             resolve();
+        //         }, 3000);
+        //     })
+        // })
+        // .then(function () {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(function(){
+        //             console.log("4");
+        //             resolve();
+        //         }, 2000);
+        //     })
+        // })
+        // .then(function () {
+        //     return new Promise(function (resolve) {
+        //         setTimeout(function(){
+        //             console.log("5");
+        //             resolve();
+        //         }, 1000);
+        //     })
+        // })
+</script>
+
+</html>

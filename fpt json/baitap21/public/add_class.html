@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>ADD NEW CLASS</title>
+</head>
+<style>
+    .error {
+        border-color: red;
+    }
+
+    .error-message {
+        color: red;
+        font-style: italic;
+        margin-bottom: 1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-3">
+                <form action="" id="add_class_form" required>
+                    <div class="form-group">
+                        <label for="">NAME CLASS</label>
+                        <input type="text" name="nameClass" class="form-control" minlength="7" maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">IMAGE</label>
+                        <input type="text" name="imageClass" class="form-control" required>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-outline-info">ADD</button>
+                        <a href="index.html" class="btn btn-outline-warning">CANCEL</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+v<script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer/dist/bouncer.polyfills.min.js"></script>
+<!-- Get minor updates and patch fixes within a major version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer@1/dist/bouncer.polyfills.min.js"></script>
+<!-- Get patch fixes within a minor version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer@1.0/dist/bouncer.polyfills.min.js"></script>
+<!-- Get a specific version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer@1.0.0/dist/bouncer.polyfills.min.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61cb2cfd194ffe0017788c15.mockapi.io/class";
+    var data = {};
+    // xử lý form 
+    var validate = new Bouncer('#add_class_form', {
+        disableSubmit: true,
+    });
+    // -> xảy ra lỗi 
+    document.addEventListener('bouncerFormInvalid', function (event) {
+        console.log(event.detail.errors);
+        console.log(event.detail.errors[0].offsetTop);
+        window.scrollTo(0, event.detail.errors[0].offsetTop);
+    }, false);
+    // -> thành công 
+    document.addEventListener('bouncerFormValid', function () {
+        alert('Form submitted successfully!');
+        // window.location.reload(); load lại trang 
+        addData();
+    }, false);
+    // xử lý form  end
+    function addData() {
+        var name = document.querySelector('input[name="nameClass"]').value;
+        var avatar = document.querySelector('input[name="imageClass"]').value;
+        data.name = name;
+        data.avatar = avatar;
+        console.log(data);
+        axios.post(url, data)
+            .then(function (response) {
+                console.log(response);
+                if (response.statusText === "Created") {
+                    window.location.href = "index.html";
+                }
+            })
+        return false;
+    }
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var name = prompt("nhap ho va ten ...");
+    var subject = prompt("nhap ten mon hoc ...");
+
+    function tinhDiem(text, time) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                var diem = prompt(text);
+                return resolve(diem);
+            }, time);
+        })
+    }
+    async function main() {
+        let diem1 = await tinhDiem("diem lan 1", 1000);
+        let diem2 = await tinhDiem("diem lan 2", 3000);
+        let diem3 = await tinhDiem("diem lan 3", 2000);
+        let final = await tinhDiem("cuoi ky ", 4000);
+        var avg = diem1 * 0.1 + diem2 * 0.2 + diem3 * 0.2 + final * 0.5;
+        console.log(avg);
+    }
+    main();
+</script>
+
+</html>

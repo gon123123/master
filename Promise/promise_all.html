@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Promise.all</p>
+    <p>giúp chạy song song với nhau , những bất đồng bộ không phụ thuộc nhau</p>
+</body>
+<script>
+    var promise1 = new Promise(
+        function (resolve) {
+            setTimeout(function () {
+                resolve([1]);
+            }, 2000);
+        }
+    );
+    var promise2 = new Promise(
+        function (resolve) {
+            setTimeout(function () {
+                resolve([2, 3, 4]);
+            }, 5000);
+        }
+    );
+    // nếu có promise bị lỗi thì chuyển tới catch 
+    // var promise2 = new Promise( // trường hợp có một trong các romise bị trả về reject thì không thực thi gì chạy thẳng tới catch luôn(tính năng)
+    //     function (resolve, reject) {
+    //         setTimeout(function () {
+    //             reject('có lỗi !');
+    //         });
+    //     }
+    // );
+    // đối số là mảng chứa các promise 
+    Promise.all([promise1, promise2]) // ất car promise xong mới lọt vào then 
+        .then(function (result) {
+            console.log(result); // mảng chứa kết quả của hai promise trên
+            // nếu muốn lấy riêng thì lấy theo chỉ số index 
+            var result1 = result[0];
+            var result2 = result[1];
+            console.log(result1);
+            console.log(result2);
+            //nếu muốn nối mẳng thì dùng concat 
+            console.log(result1.concat(result2));
+        });
+</script>
+
+</html>

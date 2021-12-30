@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        max-width: 300px;
+        max-height: 300px;
+        min-width: 300px;
+        min-height: 300px;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+
+<body>
+    <!-- <div class="box" id="box1" ondrop="Drop(event)" ondragover="allowDrop(event)"> -->
+    <div class="box" id="box1" >
+        <img id="img" draggable="true" ondragstart="startDrag(event);"
+            src="https://halotravel.vn/wp-content/uploads/2020/07/thach_trangg_101029297_573874646879779_1794923475739360981_n.jpg"
+            alt="">
+    </div>
+    <div class="box" id="box2" ondragover="allowDrop(event);" ondrop="Drop(event)"></div>
+</body>
+<script>
+    // cho phép thả cai gì vào phần tử 
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+    // kéo cái gì 
+    function startDrag(event) {
+        event.dataTransfer.setData('text', event.target.id);
+        document.querySelector('#box1').style.border = "5px dotted black";
+    }
+
+    // thả cái gì  
+    function Drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData('text');
+        event.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+</html>

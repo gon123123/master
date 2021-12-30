@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function baitap1() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                var diem1 = prompt("nhap diem bai tap 1");
+                return resolve(Number.parseInt(diem1));
+            }, 2000);
+        })
+    }
+
+    function baitap2() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                var diem2 = prompt("nhap diem bai tap 2");
+                return resolve(Number.parseInt(diem2));
+            }, 6000);
+        })
+    }
+    Promise.all(
+        [
+            baitap1(),
+            baitap2()
+        ]
+    ).then(function (result) {
+        // result đang chứa một mảng với các phần tử là các giá trị 
+        console.log(result);
+        console.log("diem tong ket hom nay la "+ ((result[0] + result[1])/2));
+    })
+</script>
+
+</html>

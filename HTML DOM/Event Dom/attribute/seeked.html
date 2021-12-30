@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>sự kiện seeked xảy ra khi người dùng di chuyển vị trí phát tới vị trí mới</p>
+    <audio controls onseeked="myFunction(this);" autoplay>
+        <source src="audio/Unit 1, Test 1.mp3" type="audio/mp3">
+    </audio>
+    <p id="demo"></p>
+</body>
+<script>
+    function myFunction(element) {
+        // var timeAudio = element.currentTime;
+        // document.getElementById("demo").innerHTML = timeAudio ;
+        // có thể kết hợp để xem người dùng có tua video khi xem không
+        // dùng sự kiện ontimeupdate  , onseeking  và thuộc tính curentTime
+        alert("không được tua đâu nhé");
+
+    }
+</script>
+
+</html>

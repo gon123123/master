@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<p>xử lý bất đồng bộ khắc phục callback hell , 6</p>
+</body>
+<script>
+    // 3 trang thai
+    // 1. Pendding (chờ xem thất bại hay thành công);
+    // 2. fulfilled (thành công )
+    // 3. rejected (thất bại)
+
+    // Promise là một object contructor 
+    var promise = new Promise(
+        // Executor 
+        // hai đối số là hàm 
+        function (resolve, reject) {
+            //Logic 
+            // khi thành công 
+            // resolve();
+
+            // khi thất bại 
+            reject('co loi !');
+        }
+    );
+
+    promise
+        // thành công
+        .then(function () {
+            console.log("thanh cong");
+            return new Promise(function (resolve, reject) {
+                reject('co loi !'); //  nếu trả về một promise thất bại thì chuyển đến catch
+            });
+        })
+        .then(function () {
+            console.log("thanh cong 2")
+        })
+        //thất bại 
+        .catch(function (err) {
+            console.log(err);
+        })
+        .finally(function () {
+            console.log("hoan thanh");
+        })
+</script>
+
+</html>

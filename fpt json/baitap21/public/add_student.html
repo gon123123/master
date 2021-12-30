@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>ADD NEW STUDENT</title>
+</head>
+
+<body onload="getListNameClass();">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-3">
+                <form action="" onsubmit="return addData();">
+                    <div class="form-group">
+                        <label for="">NAME STUDENT</label>
+                        <input type="text" name="nameStudent" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">IMAGE</label>
+                        <input type="text" name="imageStudent" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">ADD OF CLASS ?</label>
+                        <select name="" id="ofClass">
+
+                        </select>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-outline-info">SAVE</button>
+                        <a href="list_student.html" class="btn btn-outline-warning">CANCEL</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61cb2cfd194ffe0017788c15.mockapi.io/class";
+    var id = null;
+    var classId = null;
+    var param = new URLSearchParams(window.location.search);
+    classId = param.get("id");
+    console.log(classId);
+    var data = {};
+    var htmlOP = "";
+
+    function getListNameClass() {
+        axios.get(url)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    let data = response.data;
+                    data.forEach(function (item) {
+                        htmlOP += `
+                            <option value="${item.id}">${item.name}</option>
+                        `;
+                    })
+                }
+                document.querySelector("#ofClass").innerHTML = htmlOP;
+            })
+    }
+
+    function addData() {
+        var name = document.querySelector('input[name="nameStudent"]').value;
+        var image = document.querySelector('input[name="imageStudent"]').value;
+        var idClass = document.querySelector('#ofClass').value;
+        data.name_student = name;
+        data.avatar = image;
+        var urlAddData = url + "/" + idClass + "/student";
+        axios.post(urlAddData, data)
+            .then(function (response) {
+                if (response.statusText === "Created") {
+                    window.location.href = "list_student.html?id=" + classId;
+                }
+            })
+
+            return false;
+    }
+</script>
+
+</html>

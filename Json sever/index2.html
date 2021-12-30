@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>Danh sach khoa hoc</h2>
+        <ul id="list-course">
+        </ul>
+        <div>
+            <div>
+                <label for="">Name</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="">Description</label>
+                <input type="text" name="description">
+            </div>
+            <div id="handle">
+                <button id="create">
+                    create
+                </button>
+            </div>
+        </div>
+        <!-- ////////////////////////////////////////////// -->
+        <!-- các câu lệnh cần phải nhớ -->
+        <!-- npm start chạy json sever -->
+        <!-- ///////////////////////////////////////////// -->
+    </div>
+</body>
+<script>
+    var courseApi = 'http://localhost:3000/course';
+
+    function start() {
+        getCourses(renderCourse);
+        handleCreateForm();
+    }
+
+    start();
+
+    // Function 
+    function getCourses(callback) {
+        fetch(courseApi)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(callback)
+    }
+
+    function renderCourse(coursers) {
+        var listCourseBlock = document.getElementById("list-course");
+        var htmls = coursers.map(function (course) {
+            return `
+                <li class="course-item-${course.id}">
+                    <h4>${course.name}</h4>
+                    <p>${course.description}</p>
+                    <button onclick="handleDeleteCourse(${course.id})">Xoa</button>
+                    <button onclick="handleUpdateCourses(${course.id})">Sua</button>
+                </li>
+                `
+        });
+        listCourseBlock.innerHTML = htmls.join(" ");
+    }
+
+    function handleCreateForm() {
+        var createBtn = document.getElementById("create");
+        createBtn.onclick = function () {
+            var name = document.querySelector('input[name="name"]').value;
+            var description = document.querySelector('input[name="description"]').value;
+            var formData = {
+                name: name,
+                description: description
+            };
+            createCourse(formData, getCourses(renderCourse));
+        }
+    };
+    // nhan doi tuong gom name description
+    function createCourse(data, callback) {
+        var options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        };
+        fetch(courseApi, options)
+            .then(function (response) {
+                return reposes.json();
+            })
+            .then(callback)
+    }
+
+    function handleDeleteCourse(id) {
+        var options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        };
+        fetch(courseApi + '/' + id, options)
+            .then(function (response) {
+                return reposes.json();
+            })
+            .then(function () {});
+    }
+
+    function handleUpdateCourses(id) {
+        var courseElement = document.querySelector(".course-item-" + id);
+        var btnCreate = document.querySelector("#create");
+        var inputName = document.querySelector('input[name="name"]');
+        var inputDes = document.querySelector('input[name="description"]');
+        btnCreate.innerText = "Sửa";
+        var nameCourses = courseElement.querySelector("h4");
+        var desCourses = courseElement.querySelector("p");
+        inputName.value = nameCourses.innerText;
+        inputDes.value = desCourses.innerText;
+
+        var name = inputName.value,
+            des = inputDes.value;
+        var isChangeName = false;
+        var isChangeDes = false;
+        inputName.onchange = function () {
+            name = inputName.value;
+            isChangeName = true;
+        };
+        inputDes.onchange = function () {
+            des = inputDes.value;
+            isChangeDes = true;
+        };
+        btnCreate.onclick = function () {
+            if (isChangeDes || isChangeName) {
+                var data = {
+                    name: name,
+                    description: des
+                };
+                console.log(data);
+                var options = {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                };
+                fetch(courseApi + `/${id}`, options)
+                    .then(function (response) {
+                        response.json();
+                    })
+                    .then(function () {
+                        nameCourses.innerText = name;
+                        desCourses.innerText = des;
+
+                        getCourses(renderCourse);
+                    });
+            }
+            inputName.value = "";
+            inputDes.value = "";
+        };
+    }
+</script>
+
+</html>

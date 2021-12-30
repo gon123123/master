@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>UPDATE INFORMATION STUDENT</title>
+</head>
+
+<body onload="getInfoStudent();">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-3">
+                <form action="" onsubmit="return setData();">
+                    <div class="form-group">
+                        <label for="">NAME STUDENT</label>
+                        <input type="text" name="nameStudent" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">IMAGE</label>
+                        <input type="text" name="imageStudent" class="form-control">
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-outline-info">SAVE</button>
+                        <a href="index.html" class="btn btn-outline-warning">CANCEL</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var url = "https://61cb2cfd194ffe0017788c15.mockapi.io/class";
+    var id = null;
+    var classId = null;
+    var param = new URLSearchParams(window.location.search);
+    id = param.get("id");
+    classId = param.get("idClass");
+    var data = {};
+
+    function getInfoStudent() {
+        var urlDataStudent = url + "/" + classId + "/student/" + id;
+        axios.get(urlDataStudent)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    data = response.data;
+                    document.querySelector('input[name="nameStudent"]').value = data.name_student;
+                    document.querySelector('input[name="imageStudent"]').value = data.avatar;
+                }
+            })
+    }
+
+    function setData() {
+        var urlDataStudent = url + "/" + classId + "/student/" + id;
+        var name = document.querySelector('input[name="nameStudent"]').value;
+        var image = document.querySelector('input[name="imageStudent"]').value;
+
+        data.name_student = name;
+        data.avatar = image;
+        axios.put(urlDataStudent, data)
+            .then(function (response) {
+                if (response.statusText === "OK") {
+                    window.location.href = "list_student.html?id=" + classId;
+                }
+            })
+        return false;
+    }
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 600px;
+        height: 500px;
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <p>sự kiện xảy ra khi người dùng loại bỏ ngón tay khỏi một phần tử </p>
+    <div class="box">
+
+    </div>
+    <p id="demo"></p>
+</body>
+<script>
+    var element = document.querySelector(".box");
+    element.ontouchend = function (event) {
+        // console.log("chao");
+        document.querySelector("#demo").innerHTML = "bạn đã bỏ tay ra khỏi một phần tử"
+    }
+</script>
+
+</html>

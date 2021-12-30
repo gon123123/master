@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>sau 2 giây thì công việc , sự kiện 2 biến mất</p>
+    <button>click</button>
+</body>
+<script>
+    var element = document.querySelector('button');
+
+    function viec1() {
+        console.log('viec1');
+    }
+
+    function viec2() {
+        console.log('viec2');
+    }
+
+    function viec3() {
+        console.log('viec3');
+    }
+    element.addEventListener('click', viec1);
+    element.addEventListener('click', viec2);
+    element.addEventListener('click', viec3);
+    setTimeout(function (){
+        element.removeEventListener('click',viec2);
+    },2000);
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background-color: #ff1570;
+    }
+</style>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var box = document.querySelector('#box');
+
+    function setColoBox(color, time) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                box.style.backgroundColor = color;
+                resolve();
+            }, time);
+        });
+    }
+
+    setColoBox("yellow", 2000)
+        .then(function () {
+            setColoBox("green", 3000);
+        })
+</script>
+
+</html>

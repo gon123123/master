@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- sự kiện kích hoạt khi người dùng hay đổi nội dung trong trường (ngay lập tức ) -->
+   <form action="#">
+    <!-- <input type="text" id="myText" required> -->
+    <textarea name="" id="myText" cols="30" rows="10" required></textarea>
+    <input type="submit" value="submit">
+   </form>
+    <p id="demo"></p>
+</body>
+<script>
+    var element = document.querySelector('#myText');
+    element.onselect = function (e) {
+        console.log(e);
+        alert('bạn vừa bôi đen một văn bẳn trong input , tính copy hay gì ...');
+    }
+</script>
+
+</html>

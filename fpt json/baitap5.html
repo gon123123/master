@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<!-- //////////////////////////////////// -->
+<!-- KẾ THỪA TRONG OBJECT CONSTRUCTOR -->
+<!-- //////////////////////////////////// -->
+</body>
+<script>
+    function Student(masv, name) {
+        this.masv = masv;
+        this.name = name;
+        this.learning = function () {
+            console.log(`sinh vien ${this.name} dat danh hieu ...`);
+        };
+    }
+    // khai báo một hàm ngoài oject constructor thì phải dùng prototype 
+    Student.prototype.rank = function () {
+        console.log("chao cac ban nha");
+    };
+    var Tuan = new Student("20it020", "tuan");
+    Tuan.learning();
+    Tuan.rank();
+</script>
+
+</html>

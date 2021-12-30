@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var promise = new Promise(function (resolve, reject) {
+        resolve();
+    });
+    var name = "";
+    var subject = "";
+    var diem1 = 0;
+    var diem2 = 0;
+    var diem3 = 0;
+
+    function tinhDiem(diem1, diem2, diem3) {
+        var AVG = (Number(diem1) + Number(diem2) + Number(diem3)) / 3;
+        if (AVG < 5) {
+            console.log("hoc luc trung binh ...");
+        } else if (AVG > 5 && AVG <= 7) {
+            console.log("hoc luc kha ...");
+        } else if (AVG > 7 && AVG <= 8, 5) {
+            console.log("hoc luc gioi .......");
+        } else if (AVG > 8.5 && AVG <= 9) {
+            console.log("hoc luc xuat sac");
+        }
+    }
+
+    promise
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    name = prompt("nhap ten cua sinh vien ");
+                    return resolve(name);
+                }, 1000);
+            })
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    subject = prompt("nhap ten mon hoc ...");
+                    return resolve();
+                }, 1000);
+            })
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    diem1 = prompt("diem lan 1");
+                    return resolve();
+                }, 3000);
+            })
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    diem2 = prompt("diem lan 2");
+                    return resolve();
+                }, 4000);
+            })
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    diem3 = prompt("diem lan 3");
+                    return resolve();
+                }, 3000);
+            })
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    tinhDiem(diem1, diem2, diem3);
+                    console.log(diem1, diem2, diem3);
+                }, 3000);
+            })
+        })
+</script>
+
+</html>

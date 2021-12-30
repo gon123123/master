@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box1 {
+        width: 300px;
+        height: 200px;
+        background-color: red;
+    }
+
+    #box2 {
+        width: 200px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div id="box1" onclick="myFunction2()">
+        <p>div 2</p>
+        <div id="box2" onclick="myFunction1(event)">
+            <p>div 1</p>
+        </div>
+    </div>
+    <input type="checkbox" name="" id="stopPropagation">tắt nổi bọt
+</body>
+<script>
+    function myFunction1(event) {
+        // console.log(event.srcElement.checked); // trả về phần tử đã kích hoạt 
+        // console.log(event.target.checked);
+        alert("div 1");
+        if (document.getElementById("stopPropagation").checked == true) {
+            event.stopPropagation();
+        }
+    }
+
+    function myFunction2() {
+        alert("div 2");
+    }
+</script>
+
+</html>

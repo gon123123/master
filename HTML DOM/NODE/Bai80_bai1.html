@@ -1,0 +1,27 @@
+<!-- 
+Từ biến h1Element hãy lấy tên thẻ (tag) của element này và lưu vào biến h1TagName
+Lấy element ngang cấp kế tiếp của h1Element và lưu vào biến h1NextElementSibling
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Học JS DOM tại F8</h1>
+        <h2>Làm bài tập tại F8</h2>
+    </div>
+</body>
+
+</html>
+<script>
+    var h1Element = document.querySelector('h1');
+    var h1TagName = h1Element.tagName;
+    var h1NextElementSibling = h1Element.nextElementSibling;
+</script>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        max-width: 300px;
+        max-height: 300px;
+        min-width: 300px;
+        min-height: 300px;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+
+    img {
+        width: 250px;
+    }
+
+    .box2 {
+        max-width: 300px;
+        max-height: 300px;
+        min-width: 300px;
+        min-height: 300px;
+        border: 1px solid #000;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="box1" id="box1" ondrop="drop(vip);" ondragover="allowDrop(vip);">
+        <img id="girl" draggable="true" ondragstart="drag(vip)"
+            src="https://halotravel.vn/wp-content/uploads/2020/07/thach_trangg_101029297_573874646879779_1794923475739360981_n.jpg"
+            alt="">
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="box2" id="box2" ondragover="allowDrop(vip);" ondrop="drop(vip);"></div>
+</body>
+<script>
+    // kéo cái gì 
+    // chỉ rõ dữ liệu nào được kéo .
+    // phương thức dataTransfer.setData() thiết lập các kiểu dữ liệu và giá trị của dữ liệu được kéo.
+    function drag(ev) {
+        console.log(ev);
+        ev.dataTransfer.setData("text", ev.target.id);
+        // trường hợp này kiểu dữ liệu là text , giá trị là id cả phần tử được kéo ("drag1")
+    }
+
+    // khi nào thả 
+    // sự kiện ondragover chỉ định nơi nào dữ liệu được kéo có thể thả 
+    // theo mặc định , dữ liệu các phần tử không thể được thả vào bên trong phần tử khác .chúng ta phải loại bỏ tính năng này của thẻ/phần tử 
+    // event.preventDefault();
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    // thực hiện thả - ondrop 
+    // lấy dữ liệu đang được kéo ev.dataTransfer.getData("text");
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+</html>
+<!-- <!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <style>
+        #div1 {
+            width: 350px;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    Kéo hình ảnh của Kiến càng vào hình chữ nhật:
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <img id="drag1"
+        src="https://halotravel.vn/wp-content/uploads/2020/07/thach_trangg_101029297_573874646879779_1794923475739360981_n.jpg"
+        draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+</body>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+</html> -->

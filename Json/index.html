@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = ['dua hau', 'le', 'tao', 'man', 'quat'];
+    var obj = {
+        name: 'tuan',
+        age: 21,
+        job: 'stu"de"nt'
+    };
+
+    // chuyển đổi từ arr sang json 
+    console.log(JSON.stringify(arr));
+    // chuyển đổi từ obj sang json
+    console.log(JSON.stringify(obj));
+
+
+    // tao chuỗi dạng json 
+    var jsonArr = '["javascript","php","mongodb"]';
+    // chưa tìm ra cách để thêm dấu nháy kép vào một chuỗi json , đã dùng \ nhưng vẫn bị lỗi 
+    //   var jsonObj = '{"name":"minh tuan","age":21,"job":"management \"employee\""}';
+    var jsonObj = '{"name":"minh tuan","age":21,"job":"management employee "}';
+    console.log(JSON.parse(jsonArr));
+    console.log(JSON.parse(jsonObj));
+</script>
+
+</html>

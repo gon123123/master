@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box_world {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        margin: 0;
+    }
+
+    .boxFire {
+        width: 100%;
+        min-height: 900px;
+        background-color: yellow;
+    }
+</style>
+
+<body onclick="myFunction1(event)">
+    <div class="boxFire">
+        <div class="box_world"></div>
+    </div>
+</body>
+<script>
+    function myFunction1(event) {
+        // dùng cho khả năng người dùng nhìn thấy 
+        // var x = event.clientX;
+        // var y = event.clientY;
+        // thuộc tính này dành ch màn hình máy tính người dùng
+        var x = event.screenX;
+        var y = event.screenY;
+        console.log(x, y);
+
+        var element = document.createElement('div');
+        element.setAttribute('class', 'box_world');
+
+        element.setAttribute('style',
+            'position : absolute;!important; ' + ' top : ' + y + 'px;' + ' left : ' + x + 'px;');
+
+        var fire = document.querySelector('.boxFire');
+        fire.appendChild(element);
+    }
+</script>
+
+</html>

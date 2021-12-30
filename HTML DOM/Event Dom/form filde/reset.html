@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- sự kiện này giúp người dùng xóa giữ liệu trong trường nhập văn bản -->
+    <form action="#" id="myText">
+        <input type="text" required>
+        <textarea name="" cols="30" rows="10" required></textarea>
+        <input type="reset" value="Đặt lại">
+        <input type="submit" value="gửi">
+    </form>
+    <p id="demo"></p>
+</body>
+<script>
+    var element = document.querySelector('#myText');
+    element.onreset = function (e) {
+        console.log(e);
+        alert('bạn có muốn đặt lại giữ liệu  ...');
+    }
+</script>
+
+</html>
