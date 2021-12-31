@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // thực hành spread 
+    // Array 
+    var arr = [1, 2, 3, 4];
+    var arr2 = [...arr, 7, 8, 9]; // trải dữ liệu trong mang arr ra (cụ thể là xóa dấu [])
+    console.log(arr2);
+
+    // object
+    var obj1 = {
+        name: "tuan",
+        age: 21,
+        address: "470 tran dai nghia"
+    };
+    var obj2 = {
+        name: "minh tuan",
+        address: "linh hai gio linh quang tri"
+    }
+    var obj3 = { // tương đương với assign 
+        ...obj1,
+        ...obj2,
+        favorites:"doc sanh"
+    }
+    console.log(obj3);
+
+    // thực hành phần rest 
+    // array 
+    function sortArray(...rest) { // qua toán tử ...rest thì khi xử lý sẽ đucowj merg thành một array
+        return rest.sort(function (a, b) {
+            return a - b
+        });
+    }
+    console.log(sortArray(2,5,7,3,5,9,10,33,25)); // khi truyền vào là một dãy các phần tử riêng biệt 
+    // object 
+    
+</script>
+
+</html>

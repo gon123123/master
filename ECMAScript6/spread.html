@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // obj
+    function logger({
+        name,
+        price,
+        ...rest
+    }) {
+        console.log(name);
+        console.log(price);
+        console.log(rest); //lấy ra phần còn lại 
+    }
+    logger({
+        name: "javascript",
+        price: 1000,
+        description: "Description content"
+    });
+    /// array 
+    function logger2([a, b, ...rest]) {
+        console.log(a);
+        console.log(b);
+        console.log(rest); // lay cac phan tu con lai 
+    }
+    logger2([2, 6, 4, 5, 6, 7, 8]);
+
+    // QUA PHAN SPREAD  (giai)
+    var array1 = ["javascript", "ruby", "php"];
+    var array2 = ["reactjs", "dart"];
+    // khi sử dụng toán tử ...abc nay nó se loại bỏ  dấu [] trong mảng
+    var array3 = [...array2, ...array1];
+    console.log(array3);
+
+    // object
+    var object1 = {
+        name: "javascript",
+    }
+    var object2 = {
+        price: 1000
+    }
+    var object3 = {
+        ...object1,
+        ...object2,
+    };
+    console.log(object3);
+
+    var defaultConfig = {
+        api: "http://localhost...",
+        apiVersion: 'v6',
+        other: "other",
+        //
+        //
+    }
+    // giống  assign 
+    var exerciseConfig = {
+        ...defaultConfig,
+        api: "http://localhost-bai-tap...."
+    }
+    console.log(exerciseConfig);
+
+    // array  
+    var arr = ['javascript', 'php', 'node'];
+    function logger(...rest) { // rest (Zđịnh nghĩa tham số)
+        for (let i = 0; i < array.length; i++) {
+            console.log(rest[i]);
+        }
+    }
+    logger(...arr); // spread (thêm đối số)
+</script>
+
+</html>

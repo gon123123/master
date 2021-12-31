@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Course {
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+        getName() {
+            return this.name;
+        }
+        getPrice() {
+            return this.price;
+        }
+    }
+
+    const php = new Course("php", 1280);
+    const javascript = new Course("javascript", 3450);
+    console.log(php);
+    console.log(php.getName()); // truy cap method 
+    console.log(javascript);
+    console.log(javascript.getName());// truy cap method 
+</script>
+
+</html>

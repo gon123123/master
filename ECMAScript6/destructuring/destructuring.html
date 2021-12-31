@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<p>destructuring and rest paramasters</p>
+</body>
+<script>
+    const [a, b, c, d] = [1, 2, 3, 4, 5, 6, 7, 8];
+    console.log(a, b, c, d);
+    const [e, f, ...g] = [1, 2, 3, 4, 5, 6, 7, 8];
+    console.log(e, f, g);
+
+    // object 
+    var course = {
+        blog: "minh tuan",
+        type: "javascript"
+    }
+    var {
+        blog: nameBlog,
+        type: nameType
+    } = course;
+
+    console.log(nameBlog, nameType);
+
+    // object  
+    var course2 = {
+        name: "javascript",
+        price: 6789,
+        image: "http://....",
+        childRen: {
+            name: "react js",
+        }
+    };
+    // đổi tên , vì trùng biến name , có thể dùng rest parameter ....rest
+    var {
+        name: parentName,
+        childRen: {
+            name
+        },
+        description = "default value"
+    } = course2;
+    console.log(parentName);
+    console.log(name);
+    // lấy thuộc tính mà không có trong object
+    console.log(description);
+
+// function 
+function logger(...param){
+    console.log(param);
+}
+console.log(logger(1,2,3,4,5,6,7,8,9,10));
+</script>
+
+</html>
