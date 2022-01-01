@@ -68,11 +68,18 @@
         api: "http://localhost-bai-tap...."
     }
     console.log(exerciseConfig);
-
+    // vd 2 
+    var objTest2 = {
+        name: "minh tuan",
+        age: 21,
+        description: "dang vip pro"
+    }
+    console.log({...objTest2,age:20});
     // array  
     var arr = ['javascript', 'php', 'node'];
+
     function logger(...rest) { // rest (Zđịnh nghĩa tham số)
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 0; i < rest.length; i++) {
             console.log(rest[i]);
         }
     }
